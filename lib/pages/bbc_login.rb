@@ -23,16 +23,17 @@ class BBC_Login
   end
 
   def click_username
-    click_on "Username"
+    find("#user-identifier-input").click
     sleep 1
   end
 
   def click_neutral_area
-
+    find(".page__grid-wrapper").click
+    sleep 1
   end
 
   def click_password
-    click_on "password"
+    find(".field__input--password-toggle").click
     sleep 1
   end
 
@@ -40,5 +41,19 @@ class BBC_Login
     # find(:css, "#form-message-username").should be_visible
     # expect(page).to have_selector('#form-message-username', visible: true)
   page.has_selector?("#form-message-username")
+  end
+
+  def username_error_text
+    find(:css, "#form-message-username").text
+  end
+
+  def password_error
+    # find(:css, "#form-message-username").should be_visible
+    # expect(page).to have_selector('#form-message-username', visible: true)
+  page.has_selector?("#form-message-password")
+  end
+
+  def password_error_text
+    find(:css, "#form-message-password").text
   end
 end
