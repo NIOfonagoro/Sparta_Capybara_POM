@@ -29,7 +29,7 @@ class BBC_Login
 
   def click_neutral_area
     find(".page__grid-wrapper").click
-    sleep 1
+    sleep 3
   end
 
   def click_password
@@ -40,20 +40,33 @@ class BBC_Login
   def username_error
     # find(:css, "#form-message-username").should be_visible
     # expect(page).to have_selector('#form-message-username', visible: true)
-  page.has_selector?("#form-message-username")
+    page.has_selector?("#form-message-username")
   end
 
   def username_error_text
-    find(:css, "#form-message-username").text
+    find("#form-message-username").text
   end
 
   def password_error
     # find(:css, "#form-message-username").should be_visible
     # expect(page).to have_selector('#form-message-username', visible: true)
-  page.has_selector?("#form-message-password")
+    page.has_selector?("#form-message-password")
   end
 
   def password_error_text
-    find(:css, "#form-message-password").text
+    find("#form-message-password").text
   end
+
+  def username_with_special_character
+    fill_in USERNAME, with: "nick.ikenna"
+  end
+
+  def short_password
+    fill_in PASSWORD_INPUT, with: "nick1"
+  end
+
+  def incorrect_password
+    fill_in PASSWORD_INPUT, with: "Academy1"
+  end
+
 end
